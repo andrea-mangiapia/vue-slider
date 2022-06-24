@@ -40,6 +40,8 @@ var app = new Vue({
 
     methods: {
         showNextElement() {
+            // Mostra immmagine successiva solo SE non supero la lunghezza dell'array - 1
+            // ALTRIMENTI se sono a fine array torno all'inizio dell'array
             if (this.currentElement < this.slides.length - 1) {
                 this.currentElement++;
             } else {
@@ -48,11 +50,18 @@ var app = new Vue({
         },
 
         showPreviousElement() {
+            // Mostra immagine precedente solo S è maggiore di 0
+            // ALTRIMENTI se sono all'inizio dell'array ricomincia dalla lunghezza dell'array - 1
             if (this.currentElement > 0) {
                 this.currentElement--;
             } else {
                 this.currentElement = this.slides.length - 1;
             }
+        },
+           
+        currentActiveElement(elementIndex) {
+            // l' elemento correntemente attivo diventa uguale all'indice dell'immmagine cliccato
+            this.currentElement = elementIndex;
         },
     }
 })
