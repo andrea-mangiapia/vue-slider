@@ -9,6 +9,7 @@ var app = new Vue({
     el: '#root',
     data: {
         currentElement: 0,
+        intervalImage: null,
         slides: [
             {
                 image: 'img/01.jpg',
@@ -63,5 +64,9 @@ var app = new Vue({
             // l' elemento correntemente attivo diventa uguale all'indice dell'immmagine cliccato
             this.currentElement = elementIndex;
         },
+    },
+
+    mounted() {
+        this.intervalImage = setInterval(this.showNextElement, 2000);
     }
 })
