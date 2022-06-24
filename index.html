@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Carosello News</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="root">
+
+        <div class="container" >
+            <div class="slider-wrapper" tabindex="0">
+
+                <div class="item">
+                    <img :src="slides[currentElement].image" alt="slides[currentElement].title" />
+                    <div class="text">
+                        <h3>{{slides[currentElement].title}}</h3>
+                        <p>
+                            {{slides[currentElement].text}}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="thumbs">
+                    <div @click="showPreviousElement()" class="prev"></div>
+                    <div @click="showNextElement()" class="next"></div>
+                    <div class="thumb active">
+                        <img :src="slides[0].image" alt="slides[0].title"/>
+                    </div>
+                    <div class="thumb">
+                        <img :src="slides[1].image" alt="slides[1].title" />
+                    </div>
+                    <div class="thumb">
+                        <img :src="slides[2].image" alt="slides[2].title" />
+                    </div>
+                    <div class="thumb">
+                        <img :src="slides[3].image" alt="slides[3].title" />
+                    </div>
+                    <div class="thumb">
+                        <img :src="slides[4].image" alt="slides[4].title" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
