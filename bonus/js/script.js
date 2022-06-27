@@ -51,7 +51,7 @@ var app = new Vue({
         },
 
         showPreviousElement() {
-            // Mostra immagine precedente solo S è maggiore di 0
+            // Mostra immagine precedente solo SE è maggiore di 0
             // ALTRIMENTI se sono all'inizio dell'array ricomincia dalla lunghezza dell'array - 1
             if (this.currentElement > 0) {
                 this.currentElement--;
@@ -64,9 +64,23 @@ var app = new Vue({
             // l' elemento correntemente attivo diventa uguale all'indice dell'immmagine cliccato
             this.currentElement = elementIndex;
         },
+
+        
+        // quando il mouse va in hover sullo slider, bloccare l'autoplay e farlo riprendere quando esce
+        stopintervalImage() {
+            clearInterval(this.intervalImage);
+            this.intervalImage = null;
+        },
+
+        // applicato l'autoplay allo slider: ogni 3 secondi, cambia immagine automaticamente
+        startintervalImage() {
+            this.intervalImage = setInterval(this.showNextElement, 3000);
+        },    
+        
     },
 
+    // Funzione che fa partire l'autoplay al caricamento della pagina
     mounted() {
-        this.intervalImage = setInterval(this.showNextElement, 2000);
+        this.startintervalImage();
     }
 })
